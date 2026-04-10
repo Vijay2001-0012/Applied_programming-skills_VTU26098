@@ -1,17 +1,15 @@
-import java.util.HashMap;
-import java.util.Map;
-
 class Solution {
     public int firstUniqChar(String s) {
-        Map<Character, Integer> counts = new HashMap<>();
-        for (char c : s.toCharArray()) {
-            counts.put(c, counts.getOrDefault(c, 0) + 1);
+        int[] n = new int[256];
+        for(int i = 0;i < s.length();i++){
+            n[s.charAt(i)]++;
         }
-        for (int i = 0; i < s.length(); i++) {
-            if (counts.get(s.charAt(i)) == 1) {
+        for(int i = 0;i < s.length();i++){
+            if(n[s.charAt(i)] == 1){
                 return i;
             }
         }
         return -1;
+        
     }
 }
